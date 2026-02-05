@@ -1,0 +1,23 @@
+# Add SSH keys to the cache
+
+if [ -z "$SSH_AUTH_SOCK" ]; then
+    SAE_FILE="/tmp/${USER}-ssh-agent.env"
+    if [ -s "${SAE_FILE}" ]; then
+      eval "$(cat "${SAE_FILE}")" 1> /dev/null
+    else
+      ssh-agent -a "/tmp/${USER}-ssh-agent.socket" -s 1> "${SAE_FILE}"
+      chmod 600 "${SAE_FILE}"
+      eval "$(cat "${SAE_FILE}")" 1> /dev/null
+      # When ssh-add runs without positional arguments, it adds the following files
+      # - ~/.ssh/id_rsa
+      # - ~/.ssh/id_ecdsa
+      # - ~/.ssh/id_ecdsa_sk
+      # - ~/.ssh/id_ed25519
+      # - ~/.ssh/id_ed25519_sk
+      # - ~/.ssh/id_dsa
+      # If your key has another name, then add it as positional argument
+      ssh-add -q
+    fi
+fi
+
+

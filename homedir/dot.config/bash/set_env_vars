@@ -1,0 +1,11 @@
+# Set custom environment variables
+
+export ADG_WS=~/Projects/repo-adg2
+export MOD_NAME=ara_UCM
+export SHORT_MOD_NAME=ucm
+export EB_ROOT=/home/igse906/Projects/eb/adaptivecore
+export ADG_VER=2.16.0-20-11_2011
+export EB_ADG_CUSTOM_AXIVION_VERSION=7.7.2
+export GTEST_COLOR=1
+
+
