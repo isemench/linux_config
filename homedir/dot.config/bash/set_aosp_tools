@@ -1,0 +1,1 @@
+alias aosp_stashes='repo forall -c '\''STASH=$(git stash list); if [ ! -z "$STASH" ]; then echo -e "\n\033[1;32m[ $REPO_PATH ]\033[0m"; echo "$STASH"; fi'\''
